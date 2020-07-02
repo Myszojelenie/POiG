@@ -1,0 +1,50 @@
+﻿<Window x:Class="POiG_lista_TO_DO.WidokZadania"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POiG_lista_TO_DO"
+        mc:Ignorable="d"
+        Title="WidokZadania" Height="450" Width="400">
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Nazwa:" Grid.Column="0" FontSize="20" Margin="10 5" />
+                <Label x:Name="labelNazwaZadaniaWZ" Grid.Column="1" Margin="10 5" Content="BLABLA" FontSize="20"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Przedmiot:" Grid.Column="0" FontSize="20" Margin="10 5" />
+                <Label x:Name="labelNazwaPrzedmiotuWZ" Grid.Column="1" Margin="10 5" Content="BLABLA" FontSize="20"/>
+            </Grid>
+            <Label Content="Lista zadanek:" FontSize="20"/>
+            <ListBox x:Name="listBoxListaZadanekWZ" Height="190" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="textBoxDodajZadankoWZ" Grid.Column="0" FontSize="15" Margin="10 5"/>
+                <Button x:Name="ButtonDodajZadankoWZ" Content="Dodaj" Grid.Column="1" Margin="10 5"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="ButtonWykonajZadankoWZ" Content="Wykonaj zadanko" Grid.Column="0" Margin="10 5"/>
+                <Button x:Name="ButtonUsunZadankoWZ" Content="Usuń zadanko" Grid.Column="1" Margin="10 5" />
+            </Grid>
+            <Button x:Name="buttonWykonajZadanieWZ" Content="Wykonaj zadanie" Margin="10 5" />
+        </StackPanel>
+
+    </Grid>
+</Window>
