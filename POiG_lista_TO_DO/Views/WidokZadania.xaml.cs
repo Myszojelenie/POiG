@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace POiG_lista_TO_DO
+namespace POiG_lista_TO_DO.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy DodawanieZadania.xaml
+    /// Logika interakcji dla klasy WidokZadania.xaml
     /// </summary>
-    public partial class DodawanieZadania : Window
+    public partial class WidokZadania :UserControl
     {
-        public DodawanieZadania()
+        public WidokZadania()
         {
             InitializeComponent();
         }

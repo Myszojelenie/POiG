@@ -1,5 +1,4 @@
-﻿using POiG_lista_TO_DO.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POiG_lista_TO_DO
+namespace POiG_lista_TO_DO.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Home : UserControl
     {
-        public MainWindow()
+        public Home()
         {
             InitializeComponent();
-            DataContext = new MainVM();
         }
     }
 }

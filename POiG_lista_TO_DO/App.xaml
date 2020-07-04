@@ -2,8 +2,21 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:POiG_lista_TO_DO"
+             xmlns:views="clr-namespace:POiG_lista_TO_DO.Views"
+             xmlns:viewmodels="clr-namespace:POiG_lista_TO_DO.ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type viewmodels:HomeVM}">
+            <views:Home/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:DodawaniePrzedmiotuVM}">
+            <views:DodawaniePrzedmiotu/>
+        </DataTemplate>
+     <DataTemplate DataType="{x:Type viewmodels:DodawanieZadaniaVM}">
+            <views:DodawanieZadania/>
+        </DataTemplate>
+     <DataTemplate DataType="{x:Type viewmodels:ZadanieVM}">
+            <views:WidokZadania/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
