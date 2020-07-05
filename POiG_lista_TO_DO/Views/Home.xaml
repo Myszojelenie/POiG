@@ -27,8 +27,8 @@
             <Button x:Name="buttonDodajPrzedmiot" Content="Dodaj przedmiot" Margin="10"/>
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <ComboBox x:Name="comboBoxPrzedmiot" Margin="20 5 20 0"/>
-            <Label x:Name="labelDanePrzedmiotu" Content="Dane: Blablabla" Height="50" Margin="10 0"/>
+            <ComboBox x:Name="comboBoxPrzedmiot" Margin="20 5 20 0" ItemsSource="{Binding Path=Subjects, Mode=OneWay}" SelectedItem="{Binding Path = SelectedSubject,Mode=OneWayToSource}"/>
+            <Label x:Name="labelDanePrzedmiotu" Content="{Binding Path=SelectedSubjectInfo,Mode=OneWay}" Height="200" Margin="10 0"/>
             <ListBox x:Name="listBoxPrzedmiot" Height="200" BorderThickness="0" Margin="10" />
             <Grid>
                 <Grid.ColumnDefinitions>

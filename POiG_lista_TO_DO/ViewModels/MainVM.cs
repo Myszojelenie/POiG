@@ -11,16 +11,16 @@ namespace POiG_lista_TO_DO.ViewModels
 {
     public class MainVM:BaseVM
     {
-		private Model.Studies _studies;
+		private static Model.Studies _studies = new Model.Studies();
 		public Model.Studies Studies { get=>_studies; }
 		private BaseVM _selectedVM = new BaseVM();
-		private List<BaseVM> viewModels = new List<BaseVM>() { new DodawaniePrzedmiotuVM(), new HomeVM(_listOfAssignments), new DodawanieZadaniaVM(), new ZadanieVM() };
+		private List<BaseVM> viewModels = new List<BaseVM>() { new DodawaniePrzedmiotuVM(), new BaseVM(), new DodawanieZadaniaVM(), new ZadanieVM() };
 		public MainVM()
 		{
 			
 			_studies = Model.Studies.StudiesFromFile("studia.xml");
-			_listOfAssignments = ListOfAssignments;
-			viewModels[1] = new HomeVM(_listOfAssignments);
+			Console.WriteLine(_studies);
+			viewModels[1] = new HomeVM(ref _studies);
 			_selectedVM = viewModels[1];
 		}
 		public BaseVM SelectedVM
@@ -32,21 +32,7 @@ namespace POiG_lista_TO_DO.ViewModels
 				onPropertyChanged(nameof(SelectedVM));
 			}
 		}
-		private static List<string> _listOfAssignments;
-		public  List<string> ListOfAssignments
-		{
-			get
-			{
-				
-					_listOfAssignments = new List<string>();
-					foreach (var item in Studies.GenerateListOfAssignments())
-					{
-					_listOfAssignments.Add($"{item.Name}");
-					Console.WriteLine(item);
-					}
-					return _listOfAssignments;
-			}
-		}
+		
 		
 		private ICommand _changeView;
 

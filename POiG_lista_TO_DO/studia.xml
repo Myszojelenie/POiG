@@ -1,0 +1,99 @@
+﻿<?xml version="1.0"?>
+<Studies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Subjects>
+    <Subject>
+      <Name>Analiza matematyczna</Name>
+      <Assignments>
+        <Assignment>
+          <Name>Kolokwium</Name>
+          <Tasks>
+            <Task>
+              <Content>zadanko 1</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 2</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 3</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 4</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+          </Tasks>
+        </Assignment>
+        <Assignment>
+          <Name>Egzamin</Name>
+          <Tasks>
+            <Task>
+              <Content>zadanko 2</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 2</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 4</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 2</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+          </Tasks>
+        </Assignment>
+      </Assignments>
+    </Subject>
+    <Subject>
+      <Name>Algebra</Name>
+      <Assignments>
+        <Assignment>
+          <Name>Egzamin</Name>
+          <Tasks>
+            <Task>
+              <Content>zadanko 2</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 2</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 4</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 2</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+          </Tasks>
+        </Assignment>
+        <Assignment>
+          <Name>Kolokwium</Name>
+          <Tasks>
+            <Task>
+              <Content>zadanko 1</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 2</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 3</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+            <Task>
+              <Content>zadanko 4</Content>
+              <IsCompleted>false</IsCompleted>
+            </Task>
+          </Tasks>
+        </Assignment>
+      </Assignments>
+    </Subject>
+  </Subjects>
+</Studies>

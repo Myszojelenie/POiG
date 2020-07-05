@@ -41,14 +41,20 @@ namespace POiG_lista_TO_DO.Model
         {
 
         }
-        public override string ToString()
+        public string Info()
         {
-            string result = "";
-            foreach (var item in assignments)
+            string result = $"{Name}\n";
+            foreach (var item in Assignments)
             {
-                result += item;
+                result += item.ToString();
+                result += "\n";
             }
             return result;
+        }
+        public override string ToString()
+        {
+            
+            return Name;
         }
     }
 }

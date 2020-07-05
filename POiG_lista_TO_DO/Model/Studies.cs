@@ -51,15 +51,15 @@ namespace POiG_lista_TO_DO.Model
             }
             return result;
         }
-        public List<string> ListOfSubjects()
-        {
-            List<string> result = new List<string>();
-            foreach (var item in Subjects)
-            {
-                result.Add(item.Name);
-            }
-            return result;
-        }
+        //public List<Subject> ListOfSubjects()
+        //{
+        //    List<string> result = new List<string>();
+        //    foreach (var item in Subjects)
+        //    {
+        //        result.Add(item.Name);
+        //    }
+        //    return result;
+        //}
         public override string ToString()
         {
             string result = "";
