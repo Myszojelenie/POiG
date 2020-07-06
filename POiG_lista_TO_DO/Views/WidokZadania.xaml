@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Label Content="Nazwa:" Grid.Column="0" FontSize="20" Margin="10 5" />
-                <Label x:Name="labelNazwaZadaniaWZ" Grid.Column="1" Margin="10 5" Content="BLABLA" FontSize="20"/>
+                <Label x:Name="labelNazwaZadaniaWZ" Grid.Column="1" Margin="10 5" Content="{Binding Path=AssignmentName, Mode=OneWay}" FontSize="20"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -22,28 +22,36 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Label Content="Przedmiot:" Grid.Column="0" FontSize="20" Margin="10 5" />
-                <Label x:Name="labelNazwaPrzedmiotuWZ" Grid.Column="1" Margin="10 5" Content="BLABLA" FontSize="20"/>
+                <Label x:Name="labelNazwaPrzedmiotuWZ" Grid.Column="1" Margin="10 5" Content="{Binding Path=SubjectName, Mode=OneWay}" FontSize="20"/>
             </Grid>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="1*" />
+				</Grid.ColumnDefinitions>
+				<Label Content="Status:" Grid.Column="0" FontSize="20" Margin="10 5" />
+				<Label x:Name="labelStatusZadaniaWZ" Grid.Column="1" Margin="10 5" Content="{Binding Path=Status, Mode=OneWay}" FontSize="20"/>
+			</Grid>
             <Label Content="Lista zadanek:" FontSize="20"/>
-            <ListBox x:Name="listBoxListaZadanekWZ" Height="190" />
+            <ListBox x:Name="listBoxListaZadanekWZ" Height="190"  ItemsSource="{Binding Path=Tasks,Mode=OneWay}" SelectedItem="{Binding Path = SelectedTask,Mode=OneWayToSource}"/>
 
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="textBoxDodajZadankoWZ" Grid.Column="0" FontSize="15" Margin="10 5"/>
-                <Button x:Name="ButtonDodajZadankoWZ" Content="Dodaj" Grid.Column="1" Margin="10 5"/>
+                <TextBox x:Name="textBoxDodajZadankoWZ" Grid.Column="0" FontSize="15" Margin="10 5" Text="{Binding Path=TaskName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button x:Name="ButtonDodajZadankoWZ" Content="Dodaj" Grid.Column="1" Margin="10 5" Command="{Binding AddTask}"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="ButtonWykonajZadankoWZ" Content="Wykonaj zadanko" Grid.Column="0" Margin="10 5"/>
-                <Button x:Name="ButtonUsunZadankoWZ" Content="Usuń zadanko" Grid.Column="1" Margin="10 5" />
+                <Button x:Name="ButtonWykonajZadankoWZ" Content="Wykonaj zadanko" Grid.Column="0" Margin="10 5" Command="{Binding AccomplishTask}"/>
+                <Button x:Name="ButtonUsunZadankoWZ" Content="Usuń zadanko" Grid.Column="1" Margin="10 5" Command="{Binding RemoveTask}" />
             </Grid>
-            <Button x:Name="buttonWykonajZadanieWZ" Content="Wykonaj zadanie" Margin="10 5" />
+            <Button x:Name="buttonWykonajZadanieWZ" Content="Wykonaj zadanie" Margin="10 5" Command="{Binding AccomplishAssignment}"/>
         </StackPanel>
 
     </Grid>

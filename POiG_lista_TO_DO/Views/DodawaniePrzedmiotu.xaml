@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Label Content="Nazwa:" Grid.Column="0" FontSize="20" />
-                <TextBox x:Name="textBoxNazwaPrzedmiotuDP" FontSize="20" Grid.Column="1" Margin="10 5" Text="{Binding Path=Nazwa, Mode=TwoWay}"/>
+                <TextBox x:Name="textBoxNazwaPrzedmiotuDP" FontSize="20" Grid.Column="1" Margin="10 5" Text="{Binding Path=Nazwa, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Label Content="Prowadzący:" Grid.Column="0" FontSize="20" />
-                <TextBox x:Name="textBoxProwadzacyDP" FontSize="20" Grid.Column="1" Margin="10 5" Text="{Binding Path=Prowadzacy, Mode=TwoWay}"/>
+                <TextBox x:Name="textBoxProwadzacyDP" FontSize="20" Grid.Column="1" Margin="10 5" Text="{Binding Path=Prowadzacy, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Label Content="Kierunek:" Grid.Column="0" FontSize="20" />
-                <TextBox x:Name="textBoxKierunekDP" FontSize="20" Grid.Column="1" Margin="10 5" Text="{Binding Path=Kierunek, Mode=TwoWay}"/>
+                <TextBox x:Name="textBoxKierunekDP" FontSize="20" Grid.Column="1" Margin="10 5" Text="{Binding Path=Kierunek, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
 

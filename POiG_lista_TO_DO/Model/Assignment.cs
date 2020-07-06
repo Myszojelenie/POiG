@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Collections.ObjectModel;
+
 namespace POiG_lista_TO_DO.Model
 {
     public class Assignment
@@ -30,6 +32,18 @@ namespace POiG_lista_TO_DO.Model
                 }
             }
         }
+        private bool _passed;
+        public bool Passed
+        {
+            get
+            { 
+                return _passed;
+            }
+            set
+            {
+                _passed=value;
+            }
+        }
         private DateTime _deadline;
         public DateTime Deadline
         {
@@ -41,6 +55,7 @@ namespace POiG_lista_TO_DO.Model
             this.tasks = tasks;
             this.name = name;
             _deadline = deadline;
+            _passed=false;
         }
         public Assignment()
         {
@@ -69,5 +84,15 @@ namespace POiG_lista_TO_DO.Model
             return result;
         }
         public bool IsEmpty() => String.IsNullOrEmpty(Name) && Tasks == null;
+
+        public ObservableCollection<Task> TasksOC()
+        {
+            ObservableCollection<Task> result= new ObservableCollection<Task>();
+            foreach (var item in Tasks)
+            {
+                result.Add(item);
+            }
+            return result;
+        }
     }
 }

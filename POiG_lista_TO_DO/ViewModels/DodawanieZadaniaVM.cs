@@ -33,7 +33,7 @@ namespace POiG_lista_TO_DO.ViewModels
             get;set;
         }
 
-         private Subject _selectedSubject;
+        private Subject _selectedSubject;
         public Subject SelectedSubject
         {
             get

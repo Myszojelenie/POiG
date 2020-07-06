@@ -121,5 +121,17 @@ namespace POiG_lista_TO_DO.Model
             return result; 
         }
 
+        public Subject WhichSubject(Assignment assignment)
+        {
+            foreach (var subject in subjects)
+	        {
+                if (subject.Assignments.Contains(assignment))
+	            {
+                    return subject;
+	            }
+	        }
+            return new Subject();
+
+        }
     }
 }
