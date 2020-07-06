@@ -30,16 +30,22 @@ namespace POiG_lista_TO_DO.Model
                 }
             }
         }
-        public Assignment(List<Task> tasks, string name)
+        private DateTime _deadline;
+        public DateTime Deadline
+        {
+            get => _deadline;
+            set => _deadline = value;
+        }
+        public Assignment(List<Task> tasks, string name, DateTime deadline)
         {
             this.tasks = tasks;
             this.name = name;
+            _deadline = deadline;
         }
         public Assignment()
         {
 
         }
-
         public void AddTask(Task task)
         {
             tasks.Add(task);
@@ -54,12 +60,12 @@ namespace POiG_lista_TO_DO.Model
         }
         public override string ToString()
         {
-            string result = $"{Name}\n";
-            foreach (var item in Tasks)
-            {
-                result += item.ToString();
-                result += "\n";
-            }
+            string result = $"{Name} Data: {Deadline}";
+            //foreach (var item in Tasks)
+            //{
+            //    result += item.ToString();
+            //    result += "\n";
+            //}
             return result;
         }
     }

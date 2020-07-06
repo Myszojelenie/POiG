@@ -32,10 +32,27 @@ namespace POiG_lista_TO_DO.Model
                 }
             }
         }
-        public Subject(List<Assignment> assignments, string name)
+        private string _lecturer;
+
+        public string Lecturer
+        {
+            get { return _lecturer; }
+            set { _lecturer = value; }
+        }
+        private string _fieldOfStudy;
+
+        public string FieldOfStudy
+        {
+            get { return _fieldOfStudy; }
+            set { _fieldOfStudy = value; }
+        }
+
+        public Subject(List<Assignment> assignments, string name, string fieldOfStudy, string lecturer)
         {
             this.assignments = assignments;
             this.name = name;
+            _fieldOfStudy = fieldOfStudy;
+            _lecturer = lecturer;
         }
         public Subject()
         {
@@ -43,12 +60,8 @@ namespace POiG_lista_TO_DO.Model
         }
         public string Info()
         {
-            string result = $"{Name}\n";
-            foreach (var item in Assignments)
-            {
-                result += item.ToString();
-                result += "\n";
-            }
+            string result = $"{Name}\n{Lecturer}\n{FieldOfStudy}";
+           
             return result;
         }
         public override string ToString()

@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:POiG_lista_TO_DO.ViewModels"
         xmlns:local="clr-namespace:POiG_lista_TO_DO"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-   
-   
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed" >
+            <i:InvokeCommandAction Command="{Binding SaveCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
