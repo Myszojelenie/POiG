@@ -46,7 +46,6 @@ namespace POiG_lista_TO_DO.Model
         {
 
         }
-
         public void AddTask(Task task)
         {
             tasks.Add(task);
