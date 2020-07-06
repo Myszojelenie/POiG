@@ -4,14 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:POiG_lista_TO_DO.ViewModels"
+		xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:POiG_lista_TO_DO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-   
+        Title="MainWindow" Height="600" Width="800">
+
+
+	<i:Interaction.Triggers>
+		<i:EventTrigger EventName="Closed" >
+			<i:InvokeCommandAction Command="{Binding SaveCommand}" />
+		</i:EventTrigger>
+	</i:Interaction.Triggers>
    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <ContentControl Content="{Binding SelectedVM}"/>
@@ -19,7 +26,7 @@
             <Button Content="Okno główne" Command="{Binding ChangeView}" CommandParameter="Home"/>
             <Button Content="Dodaj Przedmiot" Command="{Binding ChangeView}" CommandParameter="AddSubject"/>
             <Button Content="Dodaj Zadanie" Command="{Binding ChangeView}" CommandParameter="AddTask"/>
-            <Button Content="Zobacz Zadanie" Command="{Binding ChangeView}" CommandParameter="TaskView"/>
+            <Button Content="Zobacz Zadanie" Command="{Binding ChangeViewForTask}"/>
         </StackPanel>
        
     </Grid>

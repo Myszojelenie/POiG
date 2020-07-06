@@ -11,23 +11,21 @@ namespace POiG_lista_TO_DO.ViewModels
 {
     public class MainVM:BaseVM
     {
-		private static Model.Studies _studies = new Model.Studies();
-		public Model.Studies Studies { get=>_studies; }
-		private BaseVM _selectedVM = new BaseVM();
-		private List<BaseVM> viewModels = new List<BaseVM>() { new DodawaniePrzedmiotuVM(), new BaseVM(), new DodawanieZadaniaVM(), new ZadanieVM() };
-		public MainVM()
-		{
-			
-			_studies = Model.Studies.StudiesFromFile("studia.xml");
-			Console.WriteLine(_studies);
-			viewModels[1] = new HomeVM(ref _studies);
-			_selectedVM = viewModels[1];
-		}
+		
+		protected List<BaseVM> viewModels = new List<BaseVM>() { new DodawaniePrzedmiotuVM(), new HomeVM(), new DodawanieZadaniaVM(), new ZadanieVM() };
+		private BaseVM _selectedVM = null;
 		public BaseVM SelectedVM
 		{
-			get { return _selectedVM; }
-			set 
-			{ 
+			get
+			{
+				if (_selectedVM == null)
+				{
+					_selectedVM = viewModels[1];
+				}
+				return _selectedVM;
+			}
+			set
+			{
 				_selectedVM = value;
 				onPropertyChanged(nameof(SelectedVM));
 			}
@@ -56,11 +54,7 @@ namespace POiG_lista_TO_DO.ViewModels
 						else if (arg.ToString() == "AddTask")
 						{
 							SelectedVM = viewModels[2];
-						}	
-						else if (arg.ToString() == "TaskView")
-						{
-							SelectedVM = viewModels[3];
-						}	
+						}
 						
 					},
 					arg => true);
@@ -70,6 +64,54 @@ namespace POiG_lista_TO_DO.ViewModels
 			}
 			
 		}
+
+
+
+		//tutaj specjalny icommand dla widoku zadania, ale nie wykrywa, gdy mamy selectedAssignment. Czemu?
+		private ICommand _changeViewForTask;
+
+		public ICommand ChangeViewForTask
+		{
+			get
+			{
+				if (_changeViewForTask==null)
+				{
+					
+					_changeViewForTask =  new RelayCommand(arg =>
+					{
+						SelectedVM = viewModels[3];
+					},
+					arg =>  (SelectedAssignment!=null));
+								
+				}
+				return _changeViewForTask;
+			}
+			
+		}
+
+
+
+
+
+		private ICommand _save = null;
+		public ICommand SaveCommand
+		{
+			get
+			{
+				if (_save == null)
+				{
+					_save = new RelayCommand(
+					arg =>
+					{
+						Model.Serialization.Serialize("studia.xml",Studies);
+					},
+					arg => true
+					);
+				}
+				return _save;
+			}
+		}
+
 				
 
 	}

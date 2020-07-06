@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Collections.ObjectModel;
 
 namespace POiG_lista_TO_DO.Model
 {
@@ -51,6 +52,22 @@ namespace POiG_lista_TO_DO.Model
             }
             return result;
         }
+        public void RemoveAssignment(Assignment assignment)
+        {
+            foreach (var subject in subjects)
+	        {
+                if (subject.Assignments.Contains(assignment))
+	            {
+                    subject.Assignments.Remove(assignment);
+	            }
+
+	        }
+        }
+        public void RemoveSubject(Subject subject)
+        {
+            subjects.Remove(subject);
+        }
+
         //public List<Subject> ListOfSubjects()
         //{
         //    List<string> result = new List<string>();
@@ -70,6 +87,38 @@ namespace POiG_lista_TO_DO.Model
                 result += subject.ToString();
             }
             return result;
+        }
+
+        public ObservableCollection<Assignment> ListOfAssignmentsOC()
+        {
+            ObservableCollection<Assignment> result= new ObservableCollection<Assignment>();
+
+            foreach (var item in GenerateListOfAssignments())
+            {
+                result.Add(item);
+            }
+            return result;
+        }
+
+        public ObservableCollection<Subject> SubjectsOC()
+        {
+            ObservableCollection<Subject> result = new ObservableCollection<Subject>();
+
+            foreach (var item in Subjects)
+            {
+                result.Add(item);
+            }
+            return result; 
+        }
+
+        public List<Task> TaskToList(ObservableCollection<Task> tasks)
+        {
+            List<Task> result=new List<Task>();
+            foreach (var item in tasks)
+            {
+                result.Add(item);
+            }
+            return result; 
         }
 
     }

@@ -6,7 +6,7 @@
              xmlns:vm="clr-namespace:POiG_lista_TO_DO.ViewModels"
         xmlns:local="clr-namespace:POiG_lista_TO_DO.Views"
         mc:Ignorable="d"
-       Height="450" Width="800">
+       Height="450" Width="750">
   
     <Grid>
         <Grid.ColumnDefinitions>
@@ -21,25 +21,23 @@
         <StackPanel Grid.Column="0">
             
             <Label Content="Nadchodzące..." Foreground="Red" FontSize="20" FontWeight="Bold"/>
-            <ListBox x:Name="listBoxNadchodzace" Height="230" BorderThickness="0" Margin="10" ItemsSource="{Binding Path=ListOfAssignments, Mode=OneWay}"/>
-            <Button x:Name="buttonDodajZadanie" Content="Dodaj zadanie" Margin="10"  />
-            <Button x:Name="buttonUsunZadanie" Content="Usuń zaznaczone zadanie" Margin="10" />
-            <Button x:Name="buttonDodajPrzedmiot" Content="Dodaj przedmiot" Margin="10"/>
+            <ListBox x:Name="listBoxNadchodzace" Height="350" BorderThickness="0" Margin="10" ItemsSource="{Binding Path=ListOfAssignments, Mode=OneWay}" SelectedItem="{Binding Path = SelectedAssignment,Mode=OneWayToSource}"/>
+            <Button x:Name="buttonUsunZadanie" Content="Usuń zaznaczone zadanie" Command="{Binding RemoveAssignment}" Margin="10" />
         </StackPanel>
         <StackPanel Grid.Column="1">
             <ComboBox x:Name="comboBoxPrzedmiot" Margin="20 5 20 0" ItemsSource="{Binding Path=Subjects, Mode=OneWay}" SelectedItem="{Binding Path = SelectedSubject,Mode=OneWayToSource}"/>
-            <Label x:Name="labelDanePrzedmiotu" Content="{Binding Path=SelectedSubjectInfo,Mode=OneWay}" Height="200" Margin="10 0"/>
-            <ListBox x:Name="listBoxPrzedmiot" Height="200" BorderThickness="0" Margin="10" />
+            <Label x:Name="labelDanePrzedmiotu" Content="{Binding Path=SelectedSubjectInfo,Mode=OneWay}" Height="80" Margin="10 0"/>
+            <ListBox x:Name="listBoxPrzedmiot" Height="200" BorderThickness="0" Margin="10" ItemsSource="{Binding Path=SelectedSubjectAssignments,Mode=OneWay}" SelectedItem="{Binding Path = SelectedAssignment,Mode=OneWayToSource}" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Czy zaliczony...?" FontSize="15" Margin="10 0 0 0"/>
-                <Label Grid.Column="1" Content="TAK/NIE" FontSize="15"/>
+                <Label Grid.Column="1" Content="{Binding Path=PassedInfo,Mode=OneWay}" FontSize="15"/>
             </Grid>
-            <Button x:Name="buttonZaliczPrzedmiot" Content="Zalicz przedmiot" Margin="10" />
-            <Button x:Name="buttonUsunPrzedmot" Content="Usuń przedmiot" Margin="10" />
+            <Button x:Name="buttonZaliczPrzedmiot" Content="Zalicz przedmiot" Margin="10" Command="{Binding PassSubject}" />
+            <Button x:Name="buttonUsunPrzedmot" Content="Usuń przedmiot" Margin="10"  Command="{Binding RemoveSubject}"/>
 
 
 

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <Studies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Subjects>
     <Subject>
@@ -24,6 +24,7 @@
               <IsCompleted>false</IsCompleted>
             </Task>
           </Tasks>
+          <Deadline>2020-07-15T09:43:39.2409643+02:00</Deadline>
         </Assignment>
         <Assignment>
           <Name>Egzamin</Name>
@@ -45,8 +46,11 @@
               <IsCompleted>false</IsCompleted>
             </Task>
           </Tasks>
+          <Deadline>2020-07-24T09:43:39.2549302+02:00</Deadline>
         </Assignment>
       </Assignments>
+      <Lecturer>dr Achim Swaczyna</Lecturer>
+      <FieldOfStudy>Matematyka</FieldOfStudy>
     </Subject>
     <Subject>
       <Name>Algebra</Name>
@@ -71,6 +75,7 @@
               <IsCompleted>false</IsCompleted>
             </Task>
           </Tasks>
+          <Deadline>2020-07-24T09:43:39.2549302+02:00</Deadline>
         </Assignment>
         <Assignment>
           <Name>Kolokwium</Name>
@@ -92,8 +97,11 @@
               <IsCompleted>false</IsCompleted>
             </Task>
           </Tasks>
+          <Deadline>2020-07-15T09:43:39.2409643+02:00</Deadline>
         </Assignment>
       </Assignments>
+      <Lecturer>dr Alojz Kotterba</Lecturer>
+      <FieldOfStudy>Matematyka</FieldOfStudy>
     </Subject>
   </Subjects>
 </Studies>
