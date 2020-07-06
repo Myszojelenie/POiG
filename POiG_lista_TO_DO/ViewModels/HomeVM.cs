@@ -12,6 +12,7 @@ namespace POiG_lista_TO_DO.ViewModels
     public class HomeVM : BaseVM
     {
         
+        
         private Subject _selectedSubject;
         public Subject SelectedSubject
         {

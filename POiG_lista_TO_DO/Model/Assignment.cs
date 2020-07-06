@@ -68,5 +68,6 @@ namespace POiG_lista_TO_DO.Model
             //}
             return result;
         }
+        public bool IsEmpty() => String.IsNullOrEmpty(Name) && Tasks == null;
     }
 }

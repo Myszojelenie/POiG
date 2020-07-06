@@ -34,20 +34,10 @@ namespace POiG_lista_TO_DO.ViewModels
                 return _studies.SubjectsOC();
             }
         }
-        protected Assignment _selectedAssignment;
-        public Assignment SelectedAssignment
-        {
-            get
-            {
-                return _selectedAssignment;
-            }
-            set
-            {
-                _selectedAssignment = value;
-            }
-        }
+        protected static Assignment _selectedAssignment=null;
+        public Assignment SelectedAssignment { get => _selectedAssignment; set => _selectedAssignment = value; }
 
-         
+
 
 
     }

@@ -79,10 +79,13 @@ namespace POiG_lista_TO_DO.ViewModels
 					
 					_changeViewForTask =  new RelayCommand(arg =>
 					{
+						
+						
 						SelectedVM = viewModels[3];
 					},
-					arg =>  (SelectedAssignment!=null));
-								
+					arg =>_selectedAssignment!=null
+					);
+					// (!base.SelectedAssignment.IsEmpty()))			
 				}
 				return _changeViewForTask;
 			}

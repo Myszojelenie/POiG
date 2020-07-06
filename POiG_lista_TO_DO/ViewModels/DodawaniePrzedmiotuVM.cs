@@ -11,10 +11,16 @@ namespace POiG_lista_TO_DO.ViewModels
 {
     class DodawaniePrzedmiotuVM:BaseVM
     {
-        
+        private string _nazwa;
         public string Nazwa
         {
-            get;set;
+            get => _nazwa;
+                
+            set
+            {
+                _nazwa = value;
+                onPropertyChanged(Nazwa);
+            }
         }
         public string Prowadzacy
         {
@@ -36,7 +42,7 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _addSubject = new RelayCommand(
                         arg => { Studies.Subjects.Add(new Subject(new List<Assignment>(),Nazwa,Kierunek,Prowadzacy)); Nazwa="";Prowadzacy="";Kierunek="";onPropertyChanged(nameof(Nazwa),nameof(Prowadzacy),nameof(Kierunek));},
-                        arg => (!string.IsNullOrEmpty(Nazwa) && !string.IsNullOrEmpty(Prowadzacy) && !string.IsNullOrEmpty(Kierunek)));
+                        arg => (!string.IsNullOrEmpty(Nazwa) &&!string.IsNullOrEmpty(Prowadzacy) && !string.IsNullOrEmpty(Kierunek)));
                 }
 
                 return _addSubject;
