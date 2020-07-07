@@ -21,8 +21,24 @@
         <StackPanel Grid.Column="0">
             
             <Label Content="Nadchodzące..." Foreground="Red" FontSize="20" FontWeight="Bold"/>
-            <ListBox x:Name="listBoxNadchodzace" Height="350" BorderThickness="0" Margin="10" ItemsSource="{Binding Path=ListOfAssignments, Mode=OneWay}" SelectedItem="{Binding Path = SelectedAssignment,Mode=OneWayToSource}"/>
-            <Button x:Name="buttonUsunZadanie" Content="Usuń zaznaczone zadanie" Command="{Binding RemoveAssignment}" Margin="10" />
+            
+                    <ListBox x:Name="listBoxNadchodzace" Height="350" BorderThickness="0" Margin="10" ItemsSource="{Binding Path=AssignmentsWithSubjects, Mode=OneWay}" SelectedValuePath="Key" SelectedValue="{Binding Path = SelectedAssignment,Mode=OneWayToSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Path=Key}" Grid.Column="0"/>
+                            <TextBlock Text="{Binding Path=Value}" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+                <Button x:Name="buttonUsunZadanie" Content="Usuń zaznaczone zadanie" Command="{Binding RemoveAssignment}" Margin="10" />
         </StackPanel>
         <StackPanel Grid.Column="1">
             <ComboBox x:Name="comboBoxPrzedmiot" Margin="20 5 20 0" ItemsSource="{Binding Path=Subjects, Mode=OneWay}" SelectedItem="{Binding Path = SelectedSubject,Mode=OneWayToSource}"/>

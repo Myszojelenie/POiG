@@ -90,7 +90,7 @@ namespace POiG_lista_TO_DO.Model
             string result = $"{Name}" +
                 $" Data: {_convertIntToDateString(Deadline.Day)}." +
                 $"{_convertIntToDateString(Deadline.Month)}" +
-                $".{Deadline.Year}r.";
+                $".{Deadline.Year}r. ";
             //foreach (var item in Tasks)
             //{
             //    result += item.ToString();

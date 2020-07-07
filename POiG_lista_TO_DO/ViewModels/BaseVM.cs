@@ -34,6 +34,10 @@ namespace POiG_lista_TO_DO.ViewModels
                 return _studies.SubjectsOC();
             }
         }
+        public Dictionary<Assignment,Subject> AssignmentsWithSubjects
+        {
+            get => _studies.AssignmentsWithSubjects;
+        }
         protected static Assignment _selectedAssignment=null;
         public Assignment SelectedAssignment { get => _selectedAssignment; set => _selectedAssignment = value; }
 

@@ -133,5 +133,20 @@ namespace POiG_lista_TO_DO.Model
             return new Subject();
 
         }
+        private Dictionary<Assignment, Subject> _assignmentsWithSubjects;
+       [XmlIgnore()]
+        public Dictionary<Assignment, Subject> AssignmentsWithSubjects
+        {
+            get
+            {
+                _assignmentsWithSubjects = new Dictionary<Assignment, Subject>();
+                ObservableCollection<Assignment> assignmentsOC = ListOfAssignmentsOC();
+                for (int i = 0; i < assignmentsOC.Count; i++)
+                {
+                    _assignmentsWithSubjects.Add(assignmentsOC[i], WhichSubject(assignmentsOC[i]));
+                }
+                return _assignmentsWithSubjects;
+            }
+        }
     }
 }

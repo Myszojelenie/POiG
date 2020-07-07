@@ -54,7 +54,7 @@ namespace POiG_lista_TO_DO.ViewModels
             set
             {
                 _selectedSubjectAssignments = value;
-                onPropertyChanged(nameof(ListOfAssignments),nameof(SelectedSubjectAssignments));
+                onPropertyChanged(nameof(ListOfAssignments),nameof(SelectedSubjectAssignments), nameof(AssignmentsWithSubjects));
             }
 
         }
@@ -92,7 +92,8 @@ namespace POiG_lista_TO_DO.ViewModels
                             if(SelectedSubject!=null)
                             { SelectedSubjectAssignments=SelectedSubject.AssignmentsOC(); 
                             }
-                            onPropertyChanged(nameof(ListOfAssignments));
+                        onPropertyChanged(nameof(ListOfAssignments), nameof(AssignmentsWithSubjects)
+                                );
                         },
                         arg => (SelectedAssignment!=null));
                 }
