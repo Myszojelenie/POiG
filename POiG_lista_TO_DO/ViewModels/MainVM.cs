@@ -12,7 +12,7 @@ namespace POiG_lista_TO_DO.ViewModels
     public class MainVM:BaseVM
     {
 		
-		protected List<BaseVM> viewModels = new List<BaseVM>() { new DodawaniePrzedmiotuVM(), new HomeVM(), new DodawanieZadaniaVM(), new ZadanieVM() };
+		protected List<BaseVM> viewModels = new List<BaseVM>() { new AddSubjectVM(), new HomeVM(), new AddingAssignmentVM(), new AssignmentVM() };
 		private BaseVM _selectedVM = null;
 		public BaseVM SelectedVM
 		{

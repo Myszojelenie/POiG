@@ -66,26 +66,25 @@
     <Compile Include="Model\Studies.cs" />
     <Compile Include="Model\Subject.cs" />
     <Compile Include="Model\Task.cs" />
-    <Compile Include="ViewModels\AssignmentToStringConverter.cs" />
     <Compile Include="ViewModels\BaseVM.cs" />
-    <Compile Include="ViewModels\DodawaniePrzedmiotuVM.cs" />
-    <Compile Include="ViewModels\DodawanieZadaniaVM.cs" />
+    <Compile Include="ViewModels\AddSubjectVM.cs" />
+    <Compile Include="ViewModels\AddingAssignmentVM.cs" />
     <Compile Include="ViewModels\HomeVM.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
     <Compile Include="ViewModels\BaseClass\RelayCommand.cs" />
     <Compile Include="ViewModels\BaseClass\ViewModelBase.cs" />
-    <Compile Include="ViewModels\ZadanieVM.cs" />
+    <Compile Include="ViewModels\AssignmentVM.cs" />
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WidokZadania.xaml.cs">
-      <DependentUpon>WidokZadania.xaml</DependentUpon>
+    <Compile Include="Views\AssignmentView.xaml.cs">
+      <DependentUpon>AssignmentView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\DodawaniePrzedmiotu.xaml">
+    <Page Include="Views\AddingSubject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DodawanieZadania.xaml">
+    <Page Include="Views\AddingAssignment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,11 +96,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\DodawaniePrzedmiotu.xaml.cs">
-      <DependentUpon>DodawaniePrzedmiotu.xaml</DependentUpon>
+    <Compile Include="Views\AddingSubject.xaml.cs">
+      <DependentUpon>AddingSubject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DodawanieZadania.xaml.cs">
-      <DependentUpon>DodawanieZadania.xaml</DependentUpon>
+    <Compile Include="Views\AddingAssignment.xaml.cs">
+      <DependentUpon>AddingAssignment.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -111,7 +110,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WidokZadania.xaml">
+    <Page Include="Views\AssignmentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

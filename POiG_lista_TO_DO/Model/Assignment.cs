@@ -100,16 +100,7 @@ namespace POiG_lista_TO_DO.Model
         }
         public bool IsEmpty() => String.IsNullOrEmpty(Name) && Tasks == null;
 
-        public ObservableCollection<Task> TasksOC()
-        {
-            ObservableCollection<Task> result= new ObservableCollection<Task>();
-            foreach (var item in Tasks)
-            {
-                result.Add(item);
-            }
-            return result;
-        }
-
+       
         public int CompareTo(object obj)
         {
             Assignment a = (Assignment)obj;

@@ -17,9 +17,9 @@ namespace POiG_lista_TO_DO.Views
     /// <summary>
     /// Logika interakcji dla klasy DodawanieZadania.xaml
     /// </summary>
-    public partial class DodawanieZadania :UserControl
+    public partial class AddAssignment :UserControl
     {
-        public DodawanieZadania()
+        public AddAssignment()
         {
             InitializeComponent();
         }

@@ -69,15 +69,6 @@ namespace POiG_lista_TO_DO.Model
             subjects.Remove(subject);
         }
 
-        //public List<Subject> ListOfSubjects()
-        //{
-        //    List<string> result = new List<string>();
-        //    foreach (var item in Subjects)
-        //    {
-        //        result.Add(item.Name);
-        //    }
-        //    return result;
-        //}
         public override string ToString()
         {
             string result = "";
@@ -90,29 +81,22 @@ namespace POiG_lista_TO_DO.Model
             return result;
         }
 
-        public ObservableCollection<Assignment> ListOfAssignmentsOC()
-        {
-            ObservableCollection<Assignment> result= new ObservableCollection<Assignment>();
-
-            foreach (var item in GenerateListOfAssignments())
+        public ObservableCollection<Assignment> Assignments
+        { 
+            get 
             {
-                result.Add(item);
+                ObservableCollection<Assignment> result = new ObservableCollection<Assignment>();
+
+                foreach (var item in GenerateListOfAssignments())
+                {
+                    result.Add(item);
+                }
+                return result;
             }
-            return result;
         }
+       
 
-        public ObservableCollection<Subject> SubjectsOC()
-        {
-            ObservableCollection<Subject> result = new ObservableCollection<Subject>();
-
-            foreach (var item in Subjects)
-            {
-                result.Add(item);
-            }
-           
-            return result; 
-        }
-
+       
         public List<Task> TaskToList(ObservableCollection<Task> tasks)
         {
             List<Task> result=new List<Task>();
@@ -142,10 +126,10 @@ namespace POiG_lista_TO_DO.Model
             get
             {
                 _assignmentsWithSubjects = new Dictionary<Assignment, Subject>();
-                ObservableCollection<Assignment> assignmentsOC = ListOfAssignmentsOC();
-                for (int i = 0; i < assignmentsOC.Count; i++)
+                
+                for (int i = 0; i < Assignments.Count; i++)
                 {
-                    _assignmentsWithSubjects.Add(assignmentsOC[i], WhichSubject(assignmentsOC[i]));
+                    _assignmentsWithSubjects.Add(Assignments[i], WhichSubject(Assignments[i]));
                 }
                 return _assignmentsWithSubjects;
             }

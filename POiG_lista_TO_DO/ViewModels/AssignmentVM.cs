@@ -13,7 +13,7 @@ using POiG_lista_TO_DO.ViewModels.BaseClass;
 
 namespace POiG_lista_TO_DO.ViewModels
 {
-    class ZadanieVM:BaseVM
+    class AssignmentVM:BaseVM
     {
         private string _assignmentName;
         public string AssignmentName
@@ -51,7 +51,12 @@ namespace POiG_lista_TO_DO.ViewModels
             {
                 if (SelectedAssignment!=null)
 	            {
-                    _tasks=SelectedAssignment.TasksOC();
+                    _tasks = new ObservableCollection<Model.Task>();
+                    for (int i = 0; i < SelectedAssignment.Tasks.Count; i++)
+                    {
+                        _tasks.Add(SelectedAssignment.Tasks[i]);
+                    }
+                   
                     return _tasks;
 	            }
                 return new ObservableCollection<Model.Task>();

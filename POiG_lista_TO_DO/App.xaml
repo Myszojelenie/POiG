@@ -9,14 +9,14 @@
         <DataTemplate DataType="{x:Type viewmodels:HomeVM}">
             <views:Home/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:DodawaniePrzedmiotuVM}">
-            <views:DodawaniePrzedmiotu/>
+        <DataTemplate DataType="{x:Type viewmodels:AddSubjectVM}">
+            <views:AddingSubject/>
         </DataTemplate>
-     <DataTemplate DataType="{x:Type viewmodels:DodawanieZadaniaVM}">
-            <views:DodawanieZadania/>
+     <DataTemplate DataType="{x:Type viewmodels:AddingAssignmentVM}">
+            <views:AddAssignment/>
         </DataTemplate>
-     <DataTemplate DataType="{x:Type viewmodels:ZadanieVM}">
-            <views:WidokZadania/>
+     <DataTemplate DataType="{x:Type viewmodels:AssignmentVM}">
+            <views:AssignmentView/>
         </DataTemplate>
     </Application.Resources>
 </Application>

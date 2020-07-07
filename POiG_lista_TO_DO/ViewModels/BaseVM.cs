@@ -23,15 +23,24 @@ namespace POiG_lista_TO_DO.ViewModels
         {
             get
             {
-               return _studies.ListOfAssignmentsOC();
+                ObservableCollection<Assignment> assignments = new ObservableCollection<Assignment>();
+                foreach (var item in _studies.GenerateListOfAssignments())
+                {
+                    assignments.Add(item);
+                }
+               return assignments;
             }
         }
        public ObservableCollection<Subject> Subjects
         {
             get
             {
-                
-                return _studies.SubjectsOC();
+                ObservableCollection<Subject> subjects = new ObservableCollection<Subject>();
+                foreach (var item in _studies.Subjects)
+                {
+                    subjects.Add(item);
+                }
+                return subjects;
             }
         }
         public Dictionary<Assignment,Subject> AssignmentsWithSubjects

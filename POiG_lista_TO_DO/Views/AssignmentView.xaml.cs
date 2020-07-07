@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace POiG_lista_TO_DO.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy DodawaniePrzedmiotu.xaml
+    /// Logika interakcji dla klasy WidokZadania.xaml
     /// </summary>
-    public partial class DodawaniePrzedmiotu : UserControl
+    public partial class AssignmentView :UserControl
     {
-        public DodawaniePrzedmiotu()
+        public AssignmentView()
         {
             InitializeComponent();
         }

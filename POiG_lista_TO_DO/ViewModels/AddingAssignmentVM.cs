@@ -14,9 +14,9 @@ using POiG_lista_TO_DO.ViewModels.BaseClass;
 
 namespace POiG_lista_TO_DO.ViewModels
 {
-    public class DodawanieZadaniaVM:BaseVM
+    public class AddingAssignmentVM:BaseVM
     {
-        public DodawanieZadaniaVM()
+        public AddingAssignmentVM()
         {
             _deadline=DateTime.Today;
         }
@@ -52,6 +52,10 @@ namespace POiG_lista_TO_DO.ViewModels
             get
             {
                 return _tasks;
+            }
+            set
+            {
+                _tasks = value;
             }
 
         }
@@ -89,7 +93,7 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _addTask = new RelayCommand(
                         arg => {
-                            _tasks.Add(new Model.Task(TaskName)); 
+                            Tasks.Add(new Model.Task(TaskName)); 
                             TaskName="";
                             onPropertyChanged(nameof(Tasks),nameof(TaskName));
                         },
@@ -136,7 +140,9 @@ namespace POiG_lista_TO_DO.ViewModels
                     _addAssignment = new RelayCommand(
                         arg => {
                             SelectedSubject.AddAssignment(new Assignment(Studies.TaskToList(Tasks),Name,Deadline));
-                            Name="";  _tasks=new ObservableCollection<Model.Task>(); Deadline=DateTime.Today; TaskName="";
+                            Name="";  
+                            _tasks=new ObservableCollection<Model.Task>(); 
+                            Deadline=DateTime.Today; TaskName="";
                             onPropertyChanged(nameof(Name),nameof(Tasks),nameof(Deadline),nameof(TaskName));
                         },
                         arg => ( !string.IsNullOrEmpty(Name)  && !(Deadline==null) ));

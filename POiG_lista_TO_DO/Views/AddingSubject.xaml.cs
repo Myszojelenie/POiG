@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace POiG_lista_TO_DO.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy WidokZadania.xaml
+    /// Logika interakcji dla klasy DodawaniePrzedmiotu.xaml
     /// </summary>
-    public partial class WidokZadania :UserControl
+    public partial class AddingSubject : UserControl
     {
-        public WidokZadania()
+        public AddingSubject()
         {
             InitializeComponent();
         }
