@@ -30,8 +30,13 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Path=Key}" Grid.Column="0"/>
-                            <TextBlock Text="{Binding Path=Value}" Grid.Column="1"/>
+                            <Border Grid.Column="0" BorderThickness="1" BorderBrush="HotPink">
+                                <TextBlock  Text="{Binding Path=Value}" Margin="2" Foreground="HotPink"/>
+                            </Border>
+                            <Border Grid.Column="1" BorderThickness="0">
+                                <TextBlock Text="{Binding Path=Key}" Margin="2"/>
+                            </Border>
+                           
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
