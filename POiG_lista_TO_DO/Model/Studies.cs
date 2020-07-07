@@ -50,6 +50,7 @@ namespace POiG_lista_TO_DO.Model
                     result.Add(assignment);
                 }
             }
+            result.Sort();
             return result;
         }
         public void RemoveAssignment(Assignment assignment)
@@ -108,6 +109,7 @@ namespace POiG_lista_TO_DO.Model
             {
                 result.Add(item);
             }
+           
             return result; 
         }
 

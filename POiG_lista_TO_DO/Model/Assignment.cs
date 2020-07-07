@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace POiG_lista_TO_DO.Model
 {
-    public class Assignment
+    public class Assignment:IComparable
     {
         private List<Task> tasks;
         private string name;
@@ -108,6 +108,23 @@ namespace POiG_lista_TO_DO.Model
                 result.Add(item);
             }
             return result;
+        }
+
+        public int CompareTo(object obj)
+        {
+            Assignment a = (Assignment)obj;
+            if (this.Deadline==a.Deadline)
+            {
+                return 0;
+            }
+            else if (this.Deadline > a.Deadline)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }
