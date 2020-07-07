@@ -16,17 +16,17 @@
 		</i:EventTrigger>
 	</i:Interaction.Triggers>
    
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <ContentControl Content="{Binding SelectedVM}"/>
         <StackPanel Grid.Row="1">
-            <Button Content="Okno główne" Command="{Binding ChangeView}" CommandParameter="Home"/>
-            <Button Content="Dodaj Przedmiot" Command="{Binding ChangeView}" CommandParameter="AddSubject"/>
-            <Button Content="Dodaj Zadanie" Command="{Binding ChangeView}" CommandParameter="AddTask"/>
-            <Button Content="Zobacz Zadanie" Command="{Binding ChangeViewForTask}"/>
+            <Button Content="Okno główne" Command="{Binding ChangeView}" CommandParameter="Home" Background="Pink"/>
+            <Button Content="Dodaj Przedmiot" Command="{Binding ChangeView}" CommandParameter="AddSubject"  Background="Pink"/>
+            <Button Content="Dodaj Zadanie" Command="{Binding ChangeView}" CommandParameter="AddTask"  Background="Pink"/>
+            <Button Content="Zobacz Zadanie" Command="{Binding ChangeViewForTask}" Background="Pink"/>
         </StackPanel>
        
     </Grid>

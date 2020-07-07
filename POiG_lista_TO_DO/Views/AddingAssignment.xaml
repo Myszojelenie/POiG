@@ -44,9 +44,9 @@
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="textBoxDodajZadankoDZ" Grid.Column="0" FontSize="15" Margin="10 5" Text="{Binding Path=TaskName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 <Button x:Name="ButtonDodajZadankoDZ" Content="Dodaj" Grid.Column="1" Margin="10 5" Command="{Binding AddTask}"/>
-                <Button x:Name="ButtonUsunZadankoDZ" Content="Usuń" Grid.Column="2" Margin="10 5" Command="{Binding RemoveTask}" />
+                <Button x:Name="ButtonUsunZadankoDZ" Content="Usuń" Grid.Column="2" Margin="10 5" Command="{Binding RemoveTask}" Background="Pink" />
             </Grid>
-            <Button x:Name="ButtonDodajZadanieDZ" Content="Dodaj zadanie" Margin="10 10" Command="{Binding AddAssignment}" />
+            <Button x:Name="ButtonDodajZadanieDZ" Content="Dodaj zadanie" Margin="10 10" Command="{Binding AddAssignment}" Background="Pink"/>
             
 
         </StackPanel>

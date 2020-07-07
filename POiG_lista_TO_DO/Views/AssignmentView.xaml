@@ -41,17 +41,17 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="textBoxDodajZadankoWZ" Grid.Column="0" FontSize="15" Margin="10 5" Text="{Binding Path=TaskName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button x:Name="ButtonDodajZadankoWZ" Content="Dodaj" Grid.Column="1" Margin="10 5" Command="{Binding AddTask}"/>
+                <Button x:Name="ButtonDodajZadankoWZ" Content="Dodaj" Grid.Column="1" Margin="10 5" Command="{Binding AddTask}" Background="Pink"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="ButtonWykonajZadankoWZ" Content="Wykonaj zadanko" Grid.Column="0" Margin="10 5" Command="{Binding AccomplishTask}"/>
-                <Button x:Name="ButtonUsunZadankoWZ" Content="Usuń zadanko" Grid.Column="1" Margin="10 5" Command="{Binding RemoveTask}" />
+                <Button x:Name="ButtonWykonajZadankoWZ" Content="Wykonaj zadanko" Grid.Column="0" Margin="10 5" Command="{Binding AccomplishTask}" Background="Pink"/>
+                <Button x:Name="ButtonUsunZadankoWZ" Content="Usuń zadanko" Grid.Column="1" Margin="10 5" Command="{Binding RemoveTask}" Background="Pink"/>
             </Grid>
-            <Button x:Name="buttonWykonajZadanieWZ" Content="Wykonaj zadanie" Margin="10 5" Command="{Binding AccomplishAssignment}"/>
+            <Button x:Name="buttonWykonajZadanieWZ" Content="Wykonaj zadanie" Margin="10 5" Command="{Binding AccomplishAssignment}" Background="Pink"/>
         </StackPanel>
 
     </Grid>

@@ -23,7 +23,7 @@ namespace POiG_lista_TO_DO.ViewModels
             set
             {
                 _selectedSubject = value;
-                onPropertyChanged(nameof(SelectedSubjectInfo),nameof(SelectedSubjectAssignments),nameof(PassedInfo));
+                onPropertyChanged(nameof(SelectedSubjectInfo),nameof(SelectedSubjectAssignments),nameof(PassedInfo),nameof(ColorFunc));
             }
         }
         public string SelectedSubjectInfo
@@ -146,9 +146,26 @@ namespace POiG_lista_TO_DO.ViewModels
                 return _removeSubject;
             }
         }
-        
 
-        
+
+        public System.Windows.Media.Brush ColorFunc
+        {
+            get
+            {
+                if (SelectedSubject!=null)
+                {
+                    if (SelectedSubject.Passed)
+                    {
+                        return System.Windows.Media.Brushes.Green;
+                    }
+                    return System.Windows.Media.Brushes.Red;
+                }
+                return System.Windows.Media.Brushes.Black;
+
+            }
+        }
+
+
 
     }
 }

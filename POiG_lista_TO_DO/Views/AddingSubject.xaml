@@ -34,7 +34,7 @@
             </Grid>
 
 
-            <Button x:Name="buttonDodajPrzedmiotDP" Content="Dodaj przedmiot" Margin="20 10" Command="{Binding AddSubject}"/>
+            <Button x:Name="buttonDodajPrzedmiotDP" Content="Dodaj przedmiot" Margin="20 10" Command="{Binding AddSubject}" Background="Pink"/>
             
         </StackPanel>
 
