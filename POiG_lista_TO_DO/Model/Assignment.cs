@@ -73,9 +73,24 @@ namespace POiG_lista_TO_DO.Model
         {
             tasks[number].CompleteTask();
         }
-        public override string ToString()
+        private string _convertIntToDateString(int a)
         {
-            string result = $"{Name} Data: {Deadline}";
+            if (a<10)
+            {
+                return "0" + a.ToString();
+            }
+            else
+            {
+                return a.ToString();
+            }
+        }
+      
+        public override string ToString( )
+        {
+            string result = $"{Name}" +
+                $" Data: {_convertIntToDateString(Deadline.Day)}." +
+                $"{_convertIntToDateString(Deadline.Month)}" +
+                $".{Deadline.Year}r.";
             //foreach (var item in Tasks)
             //{
             //    result += item.ToString();
