@@ -15,6 +15,7 @@ namespace POiG_lista_TO_DO.ViewModels
 {
     class AssignmentVM:BaseVM
     {
+        //properties do nazwy widocznego zadania
         private string _assignmentName;
         public string AssignmentName
         {
@@ -29,6 +30,7 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
+        //properties do przedmiotu widocznego zadania
         private string _subjectName;
         public string SubjectName
         {
@@ -44,6 +46,7 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
+        //properties do listy zadanek widocznego zadania
         private ObservableCollection<Model.Task> _tasks;
         public ObservableCollection<Model.Task> Tasks
         {
@@ -65,6 +68,7 @@ namespace POiG_lista_TO_DO.ViewModels
 
         }
 
+        //properties do wybranego z listboxa zadanka
         private Model.Task _selectedTask;
         public Model.Task SelectedTask
         {
@@ -74,10 +78,13 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
+
+        //properties do nazwy dodawanego zadanka
         private string _taskName;
         public string TaskName
         {
-            get {
+            get 
+            {
                 return _taskName;
             }
             set 
@@ -86,6 +93,7 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
+        //properties do informacji o zaliczeniu przemdiotu
         public string Status
         {
             get
@@ -102,6 +110,7 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
+        //properties do kolorku, w którym będzie się wyświetlać informacja o zaliczeniu zadania
         public System.Windows.Media.Brush ColorFunc
         {
             get
@@ -120,7 +129,7 @@ namespace POiG_lista_TO_DO.ViewModels
         }
 
 
-
+        //command do buttona dodającego zadanko
         private ICommand _addTask = null;
 
         public ICommand AddTask
@@ -131,18 +140,18 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _addTask = new RelayCommand(
                         arg => {
-                            SelectedAssignment.AddTask(new Model.Task(TaskName)); 
-                            TaskName=""; SelectedAssignment.Passed=false; Studies.WhichSubject(SelectedAssignment).Passed = false;
+                            SelectedAssignment.AddTask(new Model.Task(TaskName)); //dodaje zadanko do widocznego zadania
+                            TaskName=""; SelectedAssignment.Passed=false; Studies.WhichSubject(SelectedAssignment).Passed = false; //czyści textbox + usuwa ewentualne zaliczenie zadania i przedmiotu
                             onPropertyChanged(nameof(Tasks),nameof(TaskName),nameof(Status),nameof(ColorFunc));
                         },
-                        arg => (!string.IsNullOrEmpty(TaskName) && SelectedAssignment!=null));
+                        arg => (!string.IsNullOrEmpty(TaskName))); // jeśli mamy coś wpisane w textboxa
                 }
 
                 return _addTask;
             }
         }
 
-
+        //command do usuwania zadanka
         private ICommand _removeTask = null;
 
         public ICommand RemoveTask
@@ -153,10 +162,10 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _removeTask = new RelayCommand(
                         arg => {
-                            SelectedAssignment.RemoveTask(SelectedAssignment.Tasks.IndexOf(_selectedTask));
+                            SelectedAssignment.RemoveTask(SelectedAssignment.Tasks.IndexOf(_selectedTask)); //usuwa zadanko po wyszukaniu jego indeksu
                             onPropertyChanged(nameof(Tasks));
                         },
-                        arg => (_selectedTask!=null && SelectedAssignment!=null));
+                        arg => (_selectedTask!=null )); //jeśli jest wybrane jakieś zadanko
                 }
 
                 return _removeTask;
@@ -164,7 +173,7 @@ namespace POiG_lista_TO_DO.ViewModels
         }
 
         
-
+        //command do buttona wykonującego zadanko
         private ICommand _accomplishTask = null;
 
         public ICommand AccomplishTask
@@ -175,17 +184,17 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _accomplishTask = new RelayCommand(
                         arg => {
-                            SelectedAssignment.CompleteTask(SelectedAssignment.Tasks.IndexOf(_selectedTask));
+                            SelectedAssignment.CompleteTask(SelectedAssignment.Tasks.IndexOf(_selectedTask)); //wykonuje zadanko po wyszukaniu jego indeksu
                             onPropertyChanged(nameof(Tasks));
                         },
-                        arg => (_selectedTask!=null && SelectedAssignment!=null && !_selectedTask.IsCompleted));
+                        arg => (_selectedTask!=null && !_selectedTask.IsCompleted)); //jeśli jest wybrane jakieś zadanko i nie jest ono jeszcze zaliczone
                 }
 
                 return _accomplishTask;
             }
         }
 
-        
+        //command do buttona wykonującego zadanie
         private ICommand _accomplishAssignment = null;
 
         public ICommand AccomplishAssignment
@@ -196,11 +205,11 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _accomplishAssignment = new RelayCommand(
                         arg => {
-                            SelectedAssignment.Passed=true;
+                            SelectedAssignment.Passed=true; //zalicza zadanie i wszystkie jego zadanka
                             SelectedAssignment.CompleteAllTasks();
                             onPropertyChanged(nameof(Tasks),nameof(Status),nameof(ColorFunc));
                         },
-                        arg => (SelectedAssignment!=null && !SelectedAssignment.Passed));
+                        arg => ( !SelectedAssignment.Passed)); //jeśli zadanie nie jest ukończone
                 }
 
                 return _accomplishAssignment;

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -11,8 +12,9 @@ namespace POiG_lista_TO_DO.ViewModels
 {
     public class MainVM:BaseVM
     {
-		
+		//lista viewmodeli
 		protected List<BaseVM> viewModels = new List<BaseVM>() { new AddSubjectVM(), new HomeVM(), new AddingAssignmentVM(), new AssignmentVM() };
+		// pole opisujące aktualnie wybrany widok
 		private BaseVM _selectedVM = null;
 		public BaseVM SelectedVM
 		{
@@ -20,7 +22,7 @@ namespace POiG_lista_TO_DO.ViewModels
 			{
 				if (_selectedVM == null)
 				{
-					_selectedVM = viewModels[1];
+					_selectedVM = viewModels[1]; //domyślnie strona główna
 				}
 				return _selectedVM;
 			}
@@ -31,7 +33,7 @@ namespace POiG_lista_TO_DO.ViewModels
 			}
 		}
 		
-		
+		//command do buttonów zmieniających widok
 		private ICommand _changeView;
 
 		public ICommand ChangeView
@@ -43,7 +45,7 @@ namespace POiG_lista_TO_DO.ViewModels
 					
 					_changeView =  new RelayCommand(arg =>
 					{
-						if (arg.ToString()=="AddSubject")
+						if (arg.ToString()=="AddSubject") //w zależności od buttona mamy różne parametry
 						{
 							SelectedVM = viewModels[0];
 						}
@@ -67,7 +69,7 @@ namespace POiG_lista_TO_DO.ViewModels
 
 
 
-		//tutaj specjalny icommand dla widoku zadania, ale nie wykrywa, gdy mamy selectedAssignment. Czemu?
+		//specjalny command dla ostatniego buttona
 		private ICommand _changeViewForTask;
 
 		public ICommand ChangeViewForTask
@@ -79,13 +81,11 @@ namespace POiG_lista_TO_DO.ViewModels
 					
 					_changeViewForTask =  new RelayCommand(arg =>
 					{
-						
-						
 						SelectedVM = viewModels[3];
 					},
-					arg =>_selectedAssignment!=null
+					arg =>_selectedAssignment!=null //button ma być odblokowany tylko, gdy wybrano jakieś zadanie
 					);
-					// (!base.SelectedAssignment.IsEmpty()))			
+							
 				}
 				return _changeViewForTask;
 			}
@@ -95,7 +95,7 @@ namespace POiG_lista_TO_DO.ViewModels
 
 
 
-
+		//command zapisujący wprowadzone zmiany do pliku po zamknięciu okna
 		private ICommand _save = null;
 		public ICommand SaveCommand
 		{

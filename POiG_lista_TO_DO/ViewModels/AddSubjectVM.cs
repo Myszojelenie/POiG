@@ -11,6 +11,7 @@ namespace POiG_lista_TO_DO.ViewModels
 {
     class AddSubjectVM:BaseVM
     {
+        //properties do nazwy dodawanego przedmiotu 
         private string _nazwa;
         public string Nazwa
         {
@@ -22,20 +23,24 @@ namespace POiG_lista_TO_DO.ViewModels
                 onPropertyChanged(Nazwa);
             }
         }
+
+
+        //properties do prowadzącego dodawanego przedmiotu 
         public string Prowadzacy
         {
             get;set;
         }
+        //properties do kierunku dodawanego przedmiotu 
         public string Kierunek
         {
             get;set;
         }
 
+        //command do buttona dodającego przedmiot
         private ICommand _addSubject = null;
 
         public ICommand AddSubject
         {
-            //nie podoba mi sie, że nie wykrywa od razu, że textbox juz cos w sobie ma, trzeba odklikac i zaklikać
             get
             {
                 if (_addSubject == null)
@@ -43,14 +48,14 @@ namespace POiG_lista_TO_DO.ViewModels
                     _addSubject = new RelayCommand(
                         arg => 
                         { 
-                            Studies.Subjects.Add(new Subject(new List<Assignment>(),Nazwa,Kierunek,Prowadzacy)); 
-                            Nazwa="";
+                            Studies.Subjects.Add(new Subject(new List<Assignment>(),Nazwa,Kierunek,Prowadzacy)); //dodaje przedmiot z zadanymmi parametrami
+                            Nazwa=""; //czyści wszystko
                             Prowadzacy="";
                             Kierunek="";
                             onPropertyChanged(nameof(Nazwa),nameof(Prowadzacy),nameof(Kierunek));
                         },
                         arg => 
-                        (!string.IsNullOrEmpty(Nazwa) &&
+                        (!string.IsNullOrEmpty(Nazwa) && //jeśli we wszystkie pola jest coś wpisane
                         !string.IsNullOrEmpty(Prowadzacy) && 
                         !string.IsNullOrEmpty(Kierunek)));
                 }

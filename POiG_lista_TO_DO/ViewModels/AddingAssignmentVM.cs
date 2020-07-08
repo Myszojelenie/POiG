@@ -16,23 +16,26 @@ namespace POiG_lista_TO_DO.ViewModels
 {
     public class AddingAssignmentVM:BaseVM
     {
+        //konstruktor, ustawia datę na kalendarzu
         public AddingAssignmentVM()
         {
             _deadline=DateTime.Today;
         }
 
+        //properties daty
         private DateTime _deadline;
         public DateTime Deadline
         {
             get => _deadline;
             set => _deadline = value;
         }
-
+        //properties nazwy zadania
         public string Name
         {
             get;set;
         }
 
+        //properties wybranego przedmioty w comboboxu
         private Subject _selectedSubject;
         public Subject SelectedSubject
         {
@@ -46,6 +49,7 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
+        //properties listy zadanek widocznej w listboxie
         private ObservableCollection<Model.Task> _tasks=new ObservableCollection<Model.Task>();
         public ObservableCollection<Model.Task> Tasks
         {
@@ -60,7 +64,7 @@ namespace POiG_lista_TO_DO.ViewModels
 
         }
 
-
+        //properties wybranego zadanka z listboxa
         private Model.Task _selectedTask;
         public Model.Task SelectedTask
         {
@@ -70,10 +74,12 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
+        //properties nazwy dodawanego zadanka
         private string _taskName;
         public string TaskName
         {
-            get {
+            get 
+            {
                 return _taskName;
             }
             set 
@@ -83,6 +89,7 @@ namespace POiG_lista_TO_DO.ViewModels
         }
 
 
+        //command do buttona dodającego zadanko
         private ICommand _addTask = null;
 
         public ICommand AddTask
@@ -93,18 +100,18 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _addTask = new RelayCommand(
                         arg => {
-                            Tasks.Add(new Model.Task(TaskName)); 
+                            Tasks.Add(new Model.Task(TaskName)); //dodaje zadanko do listy + czyści textboxa
                             TaskName="";
                             onPropertyChanged(nameof(Tasks),nameof(TaskName));
                         },
-                        arg => (!string.IsNullOrEmpty(TaskName)));
+                        arg => (!string.IsNullOrEmpty(TaskName))); //jeśli jest coś zapisane w textboxie
                 }
 
                 return _addTask;
             }
         }
 
-
+        //command do buttona usuwającego zadanko
         private ICommand _removeTask = null;
 
         public ICommand RemoveTask
@@ -115,10 +122,10 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _removeTask = new RelayCommand(
                         arg => {
-                            _tasks.Remove(_selectedTask);
+                            _tasks.Remove(_selectedTask); //usuwa i aktualizuje listę
                             onPropertyChanged(nameof(Tasks));
                         },
-                        arg => (_selectedTask!=null));
+                        arg => (_selectedTask!=null)); //jesli jest wybrane jakieś zadanko
                 }
 
                 return _removeTask;
@@ -126,9 +133,9 @@ namespace POiG_lista_TO_DO.ViewModels
         }
 
 
-       
 
 
+        //command do buttona dodającego zadanie
         private ICommand _addAssignment = null;
 
         public ICommand AddAssignment
@@ -139,10 +146,10 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _addAssignment = new RelayCommand(
                         arg => {
-                            SelectedSubject.AddAssignment(new Assignment(Studies.TaskToList(Tasks),Name,Deadline));
-                            Name="";  
+                            SelectedSubject.AddAssignment(new Assignment(Studies.TaskToList(Tasks),Name,Deadline)); //dodaje zadanie z wprowadzonymi argumentami
+                            Name="";  //czyści wszystko
                             _tasks=new ObservableCollection<Model.Task>(); 
-                            Deadline=DateTime.Today; TaskName=""; SelectedSubject.Passed = false;
+                            Deadline=DateTime.Today; TaskName=""; SelectedSubject.Passed = false; //skoro dodane nowe zadanie, to trzeba zmienić ewentualne zaliczenie przedmiotu
                             onPropertyChanged(nameof(Name),nameof(Tasks),nameof(Deadline),nameof(TaskName));
                         },
                         arg => ( !string.IsNullOrEmpty(Name)  && !(Deadline==null) ));

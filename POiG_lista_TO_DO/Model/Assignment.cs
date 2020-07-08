@@ -12,6 +12,7 @@ namespace POiG_lista_TO_DO.Model
     {
         private List<Task> tasks;
         private string name;
+       //properies do nazwy zadania
         public string Name
         {
             get => name; set
@@ -22,6 +23,7 @@ namespace POiG_lista_TO_DO.Model
                 }
             }
         }
+        //properties do listy zadanek
         public List<Task> Tasks
         {
             get => tasks; set
@@ -32,6 +34,7 @@ namespace POiG_lista_TO_DO.Model
                 }
             }
         }
+        //properties do informacji o zaliczeniu zadania
         private bool _passed;
         public bool Passed
         {
@@ -44,12 +47,14 @@ namespace POiG_lista_TO_DO.Model
                 _passed=value;
             }
         }
+        //properties do daty zadania
         private DateTime _deadline;
         public DateTime Deadline
         {
             get => _deadline;
             set => _deadline = value;
         }
+        //konstruktor, domyślnie zadanie jest niezaliczone
         public Assignment(List<Task> tasks, string name, DateTime deadline)
         {
             this.tasks = tasks;
@@ -81,6 +86,7 @@ namespace POiG_lista_TO_DO.Model
                 item.CompleteTask();
             }
         }
+        //metoda pozwalająca zapisać datę w odpowiedniej postaci, użyta w ToString()
         private string _convertIntToDateString(int a)
         {
             if (a<10)
@@ -99,16 +105,12 @@ namespace POiG_lista_TO_DO.Model
                 $" Data: {_convertIntToDateString(Deadline.Day)}." +
                 $"{_convertIntToDateString(Deadline.Month)}" +
                 $".{Deadline.Year}r. ";
-            //foreach (var item in Tasks)
-            //{
-            //    result += item.ToString();
-            //    result += "\n";
-            //}
+           
             return result;
         }
-        public bool IsEmpty() => String.IsNullOrEmpty(Name) && Tasks == null;
+        
 
-       
+       //metoda porównująca deadline'y 2 zadań
         public int CompareTo(object obj)
         {
             Assignment a = (Assignment)obj;

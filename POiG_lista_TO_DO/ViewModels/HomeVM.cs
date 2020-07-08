@@ -12,7 +12,7 @@ namespace POiG_lista_TO_DO.ViewModels
     public class HomeVM : BaseVM
     {
         
-        
+        //properties do wybranego przedmoitu z comboboxa
         private Subject _selectedSubject;
         public Subject SelectedSubject
         {
@@ -26,6 +26,7 @@ namespace POiG_lista_TO_DO.ViewModels
                 onPropertyChanged(nameof(SelectedSubjectInfo),nameof(SelectedSubjectAssignments),nameof(PassedInfo),nameof(ColorFunc));
             }
         }
+        //properties do info o wybranym przedmiocie
         public string SelectedSubjectInfo
         {
             get { 
@@ -39,6 +40,7 @@ namespace POiG_lista_TO_DO.ViewModels
                 }
                 }
         }
+        //properies do listy zadań z wybranego przedmiotu (wszystkich)
         private ObservableCollection<Assignment> _selectedSubjectAssignments;
         public ObservableCollection<Assignment> SelectedSubjectAssignments
         {
@@ -59,6 +61,7 @@ namespace POiG_lista_TO_DO.ViewModels
 
         }
 
+        //properties do informacji, czy przedmiot jest zaliczony 
         public string PassedInfo
         {
             get
@@ -76,56 +79,54 @@ namespace POiG_lista_TO_DO.ViewModels
         }
 
 
-        // usuwa, ale nie widac od razu
+        // command do buttona usuwającego zaznaczone zadanie
         private ICommand _removeAssignment = null;
 
         public ICommand RemoveAssignment
         {
-            //do stworzenia obiektu polecenie użyjemy pomocniczej klasy RelayCommand
             get
             {
                 if (_removeAssignment == null)
                 {
                     _removeAssignment = new RelayCommand(
                         arg => {
-                            Studies.RemoveAssignment(SelectedAssignment); 
+                            Studies.RemoveAssignment(SelectedAssignment);  //usuwa zadanie z listy wszystkich zadań
                             if(SelectedSubject!=null)
-                            { SelectedSubjectAssignments=SelectedSubject.AssignmentsOC(); 
+                            { SelectedSubjectAssignments=SelectedSubject.AssignmentsOC();  //jeślimamy wybrany jakiś przedmiot, to na nowo pobiera listę jego zadań
                             }
                         onPropertyChanged(nameof(ListOfAssignments), nameof(AssignmentsWithSubjects)
                                 );
                         },
-                        arg => (SelectedAssignment!=null));
+                        arg => (SelectedAssignment!=null)); //jeśli wybrano jakieś zadanie
                 }
 
                 return _removeAssignment;
             }
         }
 
-
-         private ICommand _passSubject = null;
+        //command do buttona zaliczającego cały przedmiot
+        private ICommand _passSubject = null;
 
         public ICommand PassSubject
         {
-            //do stworzenia obiektu polecenie użyjemy pomocniczej klasy RelayCommand
             get
             {
                 if (_passSubject == null)
                 {
                     _passSubject = new RelayCommand(
                         arg => {
-                            SelectedSubject.Passed=true;
+                            SelectedSubject.Passed=true; //zalicza przedmiot i wszystkie jego zadanka, informuje odpowiednie pola
                             SelectedSubject.PassAllAssignments();
                             onPropertyChanged(nameof(PassedInfo),nameof(ColorFunc), nameof(ListOfAssignments), nameof(AssignmentsWithSubjects));
                         },
-                        arg => (SelectedSubject!=null && PassedInfo!="TAK"));
+                        arg => (SelectedSubject!=null && PassedInfo!="TAK")); //jeśli jest wybrany jakiś przedmiot i nie jest jeszcze zaliczony
                 }
 
                 return _passSubject;
             }
         }
 
-
+        //command do buttona usuwającego przedmiot
         private ICommand _removeSubject = null;
 
         public ICommand RemoveSubject
@@ -137,18 +138,18 @@ namespace POiG_lista_TO_DO.ViewModels
                 {
                     _removeSubject = new RelayCommand(
                         arg => {
-                            Studies.RemoveSubject(SelectedSubject);
+                            Studies.RemoveSubject(SelectedSubject); //usuwa przedmiot, usuwa zaznaczenie przedmiotu
                             SelectedSubject=null;
                             onPropertyChanged(nameof(SelectedSubjectAssignments),nameof(SelectedSubjectInfo),nameof(Subjects),nameof(SelectedSubject),nameof(AssignmentsWithSubjects));
                         },
-                        arg => (SelectedSubject!=null));
+                        arg => (SelectedSubject!=null)); //jeśli jakiś przedmiot jest zaznaczony
                 }
 
                 return _removeSubject;
             }
         }
 
-
+        //properties do kolorku, w którym będzie wyświetlać się informacja o zaliczeniu przedmiotu
         public System.Windows.Media.Brush ColorFunc
         {
             get

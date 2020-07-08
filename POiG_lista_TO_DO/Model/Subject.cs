@@ -12,7 +12,7 @@ namespace POiG_lista_TO_DO.Model
     public class Subject
     {
         private string name;
-
+        //properties do nazwy przedmiotu
         public string Name
         {
             get => name; set
@@ -24,7 +24,7 @@ namespace POiG_lista_TO_DO.Model
             }
         }
 
-       
+       //properties do listy zadań danego przedmiotu
         private List<Assignment> assignments;
         public List<Assignment> Assignments
         {
@@ -38,6 +38,7 @@ namespace POiG_lista_TO_DO.Model
             }
         }
         
+        //properties do informacji o tym, czy przedmiot jest zaliczony
         private bool _passed;
         public bool Passed
         {
@@ -52,20 +53,20 @@ namespace POiG_lista_TO_DO.Model
         }
 
         private string _lecturer;
-
+        //properties do prowaadzacego
         public string Lecturer
         {
             get { return _lecturer; }
             set { _lecturer = value; }
         }
         private string _fieldOfStudy;
-
+        //properties do kierunku
         public string FieldOfStudy
         {
             get { return _fieldOfStudy; }
             set { _fieldOfStudy = value; }
         }
-
+        //konstruktor, domyślnie przedmiot jest niezaliczony
         public Subject(List<Assignment> assignments, string name, string fieldOfStudy, string lecturer)
         {
             this.assignments = assignments;
@@ -78,6 +79,7 @@ namespace POiG_lista_TO_DO.Model
         {
 
         }
+        //metoda zwracająca info o przedmiocie
         public string Info()
         {
             string result = $"{Name}\n{Lecturer}\n{FieldOfStudy}";
@@ -86,10 +88,9 @@ namespace POiG_lista_TO_DO.Model
         }
         public override string ToString()
         {
-            
             return Name;
         }
-        
+        //metoda zwracająca listę zadań przedmiotu w formie ObservableCollection
         public ObservableCollection<Assignment> AssignmentsOC()
         {
             ObservableCollection<Assignment> result= new ObservableCollection<Assignment>();
@@ -99,11 +100,12 @@ namespace POiG_lista_TO_DO.Model
             }
             return result;
         }
-
+        //metoda dodająca zadanie
         public void AddAssignment(Assignment assignment)
         {
             assignments.Add(assignment);
         }
+        //metoda zaliczająca wszystkie zadania i ich zadanka
         public void PassAllAssignments()
         {
             foreach (var item in Assignments)

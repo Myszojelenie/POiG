@@ -11,6 +11,7 @@ namespace POiG_lista_TO_DO.Model
 {
     public class Studies
     {
+        //properties do listy przedmiotów (listy obiektów klasy Subject)
         private List<Subject> subjects;
         public List<Subject> Subjects
         {
@@ -23,6 +24,7 @@ namespace POiG_lista_TO_DO.Model
                 }
             }
         }
+        //konstruktory
         public Studies(List<Subject> subjects)
         {
             this.subjects = subjects;
@@ -32,6 +34,7 @@ namespace POiG_lista_TO_DO.Model
 
         }
       
+        //metoda generująca wszystkie niezdane zadania w formie List
         public List<Assignment> GenerateListOfAssignments()
         {
             List<Assignment> result = new List<Assignment>();
@@ -49,6 +52,7 @@ namespace POiG_lista_TO_DO.Model
             result.Sort();
             return result;
         }
+        //usuwa zadanie z listy wszystkich zadań 
         public void RemoveAssignment(Assignment assignment)
         {
             foreach (var subject in subjects)
@@ -65,6 +69,7 @@ namespace POiG_lista_TO_DO.Model
             subjects.Remove(subject);
         }
 
+        
         public override string ToString()
         {
             string result = "";
@@ -77,6 +82,7 @@ namespace POiG_lista_TO_DO.Model
             return result;
         }
 
+        //properties do listy wszystkich niezdanych zadań w formie ObservableCollection
         public ObservableCollection<Assignment> Assignments
         { 
             get 
@@ -90,9 +96,9 @@ namespace POiG_lista_TO_DO.Model
                 return result;
             }
         }
-       
 
-       
+
+        //metoda przekształcająca ObservableCollection w List
         public List<Task> TaskToList(ObservableCollection<Task> tasks)
         {
             List<Task> result=new List<Task>();
@@ -103,6 +109,7 @@ namespace POiG_lista_TO_DO.Model
             return result; 
         }
 
+        //metoda wyznaczająca przedmiot, do którego należy zadanie
         public Subject WhichSubject(Assignment assignment)
         {
             foreach (var subject in subjects)
@@ -115,6 +122,8 @@ namespace POiG_lista_TO_DO.Model
             return new Subject();
 
         }
+
+        //lista do wyświetlania zadań z nazwą przedmiotów w nadchodzących
         private Dictionary<Assignment, Subject> _assignmentsWithSubjects;
        [XmlIgnore()]
         public Dictionary<Assignment, Subject> AssignmentsWithSubjects
