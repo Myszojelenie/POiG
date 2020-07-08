@@ -128,6 +128,16 @@ namespace POiG_lista_TO_DO.Model
             }
         }
 
+        public ObservableCollection<Task> TasksOC()
+        {
+            ObservableCollection<Task> result = new ObservableCollection<Task>();
+            for (int i = 0; i < Tasks.Count; i++)
+            {
+                result.Add(Tasks[i]);
+            }
+
+            return result;
+        }
 
     }
 }

@@ -46,21 +46,14 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
-        //properties do listy zadanek widocznego zadania
-        private ObservableCollection<Model.Task> _tasks;
+        //properties do listy zadanek widocznego zadania w ObservableCollection
         public ObservableCollection<Model.Task> Tasks
         {
             get
             {
                 if (SelectedAssignment!=null)
 	            {
-                    _tasks = new ObservableCollection<Model.Task>();
-                    for (int i = 0; i < SelectedAssignment.Tasks.Count; i++)
-                    {
-                        _tasks.Add(SelectedAssignment.Tasks[i]);
-                    }
-                   
-                    return _tasks;
+                    return SelectedAssignment.TasksOC();
 	            }
                 return new ObservableCollection<Model.Task>();
                 

@@ -23,7 +23,7 @@ namespace POiG_lista_TO_DO.ViewModels
         {
             get
             {
-                return _studies.Assignments;
+                return _studies.Assignments();
             }
         }
         //properties dolisty wszystkich przedmiotów 
@@ -31,12 +31,7 @@ namespace POiG_lista_TO_DO.ViewModels
         {
             get
             {
-                ObservableCollection<Subject> subjects = new ObservableCollection<Subject>();
-                foreach (var item in _studies.Subjects)
-                {
-                    subjects.Add(item);
-                }
-                return subjects;
+                return _studies.SubjectsOC();
             }
         }
         //properties do listy zadań z uwzględnionymi przedmiotami

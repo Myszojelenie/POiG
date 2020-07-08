@@ -33,7 +33,17 @@ namespace POiG_lista_TO_DO.Model
         {
 
         }
-      
+        //metoda zwracająca listę wszystkich przedmiotów w formie ObservableCollection
+        public ObservableCollection<Subject> SubjectsOC()
+        {
+            ObservableCollection<Subject> subjects = new ObservableCollection<Subject>();
+            foreach (var item in Subjects)
+            {
+                subjects.Add(item);
+            }
+            return subjects;
+        }
+
         //metoda generująca wszystkie niezdane zadania w formie List
         public List<Assignment> GenerateListOfAssignments()
         {
@@ -82,19 +92,17 @@ namespace POiG_lista_TO_DO.Model
             return result;
         }
 
-        //properties do listy wszystkich niezdanych zadań w formie ObservableCollection
-        public ObservableCollection<Assignment> Assignments
+        //metoda zwracająca listę wszystkich niezdanych zadań w formie ObservableCollection
+        public ObservableCollection<Assignment> Assignments()
         { 
-            get 
-            {
-                ObservableCollection<Assignment> result = new ObservableCollection<Assignment>();
+            ObservableCollection<Assignment> result = new ObservableCollection<Assignment>();
 
-                foreach (var item in GenerateListOfAssignments())
-                {
-                    result.Add(item);
-                }
-                return result;
+            foreach (var item in GenerateListOfAssignments())
+            {
+                result.Add(item);
             }
+            return result;
+            
         }
 
 
@@ -132,9 +140,9 @@ namespace POiG_lista_TO_DO.Model
             {
                 _assignmentsWithSubjects = new Dictionary<Assignment, Subject>();
                 
-                for (int i = 0; i < Assignments.Count; i++)
+                for (int i = 0; i < Assignments().Count; i++)
                 {
-                    _assignmentsWithSubjects.Add(Assignments[i], WhichSubject(Assignments[i]));
+                    _assignmentsWithSubjects.Add(Assignments()[i], WhichSubject(Assignments()[i]));
                 }
                 return _assignmentsWithSubjects;
             }
