@@ -116,7 +116,7 @@ namespace POiG_lista_TO_DO.ViewModels
                         arg => {
                             SelectedSubject.Passed=true;
                             SelectedSubject.PassAllAssignments();
-                            onPropertyChanged(nameof(PassedInfo),nameof(ColorFunc));
+                            onPropertyChanged(nameof(PassedInfo),nameof(ColorFunc), nameof(ListOfAssignments), nameof(AssignmentsWithSubjects));
                         },
                         arg => (SelectedSubject!=null && PassedInfo!="TAK"));
                 }

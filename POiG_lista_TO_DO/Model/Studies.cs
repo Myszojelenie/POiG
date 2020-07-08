@@ -31,15 +31,7 @@ namespace POiG_lista_TO_DO.Model
         {
 
         }
-        public static Studies StudiesFromFile(string pathToFile)
-        {
-            XmlSerializer xss = new XmlSerializer(typeof(Studies));
-            
-            Studies studies;
-            using (Stream s = File.OpenRead(pathToFile))
-                studies = (Studies)xss.Deserialize(s);
-            return studies;
-        }
+      
         public List<Assignment> GenerateListOfAssignments()
         {
             List<Assignment> result = new List<Assignment>();
@@ -47,7 +39,11 @@ namespace POiG_lista_TO_DO.Model
             {
                 foreach (var assignment in subject.Assignments)
                 {
-                    result.Add(assignment);
+                    if (!assignment.Passed)
+                    {
+                        result.Add(assignment);
+                    }
+                    
                 }
             }
             result.Sort();
