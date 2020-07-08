@@ -102,6 +102,24 @@ namespace POiG_lista_TO_DO.ViewModels
             }
         }
 
+        public System.Windows.Media.Brush ColorFunc
+        {
+            get
+            {
+                if (SelectedAssignment != null)
+                {
+                    if (SelectedAssignment.Passed)
+                    {
+                        return System.Windows.Media.Brushes.Green;
+                    }
+                    return System.Windows.Media.Brushes.Red;
+                }
+                return System.Windows.Media.Brushes.Black;
+
+            }
+        }
+
+
 
         private ICommand _addTask = null;
 
@@ -114,8 +132,8 @@ namespace POiG_lista_TO_DO.ViewModels
                     _addTask = new RelayCommand(
                         arg => {
                             SelectedAssignment.AddTask(new Model.Task(TaskName)); 
-                            TaskName=""; SelectedAssignment.Passed=false;
-                            onPropertyChanged(nameof(Tasks),nameof(TaskName),nameof(Status));
+                            TaskName=""; SelectedAssignment.Passed=false; Studies.WhichSubject(SelectedAssignment).Passed = false;
+                            onPropertyChanged(nameof(Tasks),nameof(TaskName),nameof(Status),nameof(ColorFunc));
                         },
                         arg => (!string.IsNullOrEmpty(TaskName) && SelectedAssignment!=null));
                 }
@@ -160,7 +178,7 @@ namespace POiG_lista_TO_DO.ViewModels
                             SelectedAssignment.CompleteTask(SelectedAssignment.Tasks.IndexOf(_selectedTask));
                             onPropertyChanged(nameof(Tasks));
                         },
-                        arg => (_selectedTask!=null && SelectedAssignment!=null));
+                        arg => (_selectedTask!=null && SelectedAssignment!=null && !_selectedTask.IsCompleted));
                 }
 
                 return _accomplishTask;
@@ -179,13 +197,10 @@ namespace POiG_lista_TO_DO.ViewModels
                     _accomplishAssignment = new RelayCommand(
                         arg => {
                             SelectedAssignment.Passed=true;
-                            for (int i = 0; i < SelectedAssignment.Tasks.Count(); i++)
-			                {
-                                SelectedAssignment.CompleteTask(i);
-			                }
-                            onPropertyChanged(nameof(Tasks),nameof(Status));
+                            SelectedAssignment.CompleteAllTasks();
+                            onPropertyChanged(nameof(Tasks),nameof(Status),nameof(ColorFunc));
                         },
-                        arg => (SelectedAssignment!=null));
+                        arg => (SelectedAssignment!=null && !SelectedAssignment.Passed));
                 }
 
                 return _accomplishAssignment;

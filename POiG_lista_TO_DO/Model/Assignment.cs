@@ -73,6 +73,14 @@ namespace POiG_lista_TO_DO.Model
         {
             tasks[number].CompleteTask();
         }
+
+        public void CompleteAllTasks()
+        {
+            foreach (var item in Tasks)
+            {
+                item.CompleteTask();
+            }
+        }
         private string _convertIntToDateString(int a)
         {
             if (a<10)
@@ -117,5 +125,7 @@ namespace POiG_lista_TO_DO.Model
                 return -1;
             }
         }
+
+
     }
 }

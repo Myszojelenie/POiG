@@ -115,7 +115,8 @@ namespace POiG_lista_TO_DO.ViewModels
                     _passSubject = new RelayCommand(
                         arg => {
                             SelectedSubject.Passed=true;
-                            onPropertyChanged(nameof(PassedInfo));
+                            SelectedSubject.PassAllAssignments();
+                            onPropertyChanged(nameof(PassedInfo),nameof(ColorFunc));
                         },
                         arg => (SelectedSubject!=null && PassedInfo!="TAK"));
                 }
@@ -138,7 +139,7 @@ namespace POiG_lista_TO_DO.ViewModels
                         arg => {
                             Studies.RemoveSubject(SelectedSubject);
                             SelectedSubject=null;
-                            onPropertyChanged(nameof(SelectedSubjectAssignments),nameof(SelectedSubjectInfo),nameof(Subjects),nameof(SelectedSubject));
+                            onPropertyChanged(nameof(SelectedSubjectAssignments),nameof(SelectedSubjectInfo),nameof(Subjects),nameof(SelectedSubject),nameof(AssignmentsWithSubjects));
                         },
                         arg => (SelectedSubject!=null));
                 }

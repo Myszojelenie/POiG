@@ -142,7 +142,7 @@ namespace POiG_lista_TO_DO.ViewModels
                             SelectedSubject.AddAssignment(new Assignment(Studies.TaskToList(Tasks),Name,Deadline));
                             Name="";  
                             _tasks=new ObservableCollection<Model.Task>(); 
-                            Deadline=DateTime.Today; TaskName="";
+                            Deadline=DateTime.Today; TaskName=""; SelectedSubject.Passed = false;
                             onPropertyChanged(nameof(Name),nameof(Tasks),nameof(Deadline),nameof(TaskName));
                         },
                         arg => ( !string.IsNullOrEmpty(Name)  && !(Deadline==null) ));

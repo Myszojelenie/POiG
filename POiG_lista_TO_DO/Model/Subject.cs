@@ -104,5 +104,13 @@ namespace POiG_lista_TO_DO.Model
         {
             assignments.Add(assignment);
         }
+        public void PassAllAssignments()
+        {
+            foreach (var item in Assignments)
+            {
+                item.Passed = true;
+                item.CompleteAllTasks();
+            }
+        }
     }
 }
